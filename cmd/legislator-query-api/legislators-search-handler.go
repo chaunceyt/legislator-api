@@ -54,20 +54,19 @@ func LegislatorsSearch(w http.ResponseWriter, r *http.Request) {
 		// Search for firstname or nickname
 		if (v.Name.First == strings.Title(firstname) || v.Name.NickName == strings.Title(firstname)) && v.Name.Last == strings.Title(lastname) {
 
-			// Get current term in office. This is the last item in the array.
-			// A type:rep has a district the sen doesn't
-
 			legislatorName := ""
 			if v.Terms[len(v.Terms)-1].Type == "rep" {
 				legislatorName = termType(v.Terms[len(v.Terms)-1].Type) + " " + v.Name.OfficialFull + " (" + v.Terms[len(v.Terms)-1].Party + ") " + v.Terms[len(v.Terms)-1].State + " District " + strconv.Itoa(v.Terms[len(v.Terms)-1].District)
 			} else {
 				legislatorName = termType(v.Terms[len(v.Terms)-1].Type) + " " + v.Name.OfficialFull + " (" + v.Terms[len(v.Terms)-1].Party + ") " + v.Terms[len(v.Terms)-1].State
 			}
+
 			lawmaker["bioguide_id"] = v.ID.Bioguide
 			lawmaker["name"] = legislatorName
 			lawmaker["mailing_address"] = v.Terms[len(v.Terms)-1].Address
 			lawmaker["office_phone"] = v.Terms[len(v.Terms)-1].Phone
 			lawmaker["party"] = v.Terms[len(v.Terms)-1].Party
+
 			// Fax number.
 			if v.Terms[len(v.Terms)-1].Fax != "" {
 				lawmaker["office_fax"] = v.Terms[len(v.Terms)-1].Fax
@@ -148,15 +147,16 @@ func LegislatorsSearch(w http.ResponseWriter, r *http.Request) {
 
 			tmpl := template.Must(template.ParseFiles("home.html"))
 			data := LegislatorsPageData{
-				PageTitle:                "Legislators API",
-				LegislatorName:           lawmaker["name"],
-				LegislatorMailingAddress: lawmaker["mailing_address"],
-				LegislatorOfficePhone:    lawmaker["office_phone"],
-				LegislatorParty:          lawmaker["party"],
-				LegislatorOfficeFax:      lawmaker["office_fax"],
-				LegislatorWebsite:        lawmaker["website"],
-				LegislatorBioguideUrl:    lawmaker["biography"],
-				//	LegislatorWikiDataUrl:        lawmaker["wikidata_summary"],
+				PageTitle:                    "Legislators API",
+				LegislatorName:               lawmaker["name"],
+				LegislatorFirstName:          firstname,
+				LegislatorLastName:           lastname,
+				LegislatorMailingAddress:     lawmaker["mailing_address"],
+				LegislatorOfficePhone:        lawmaker["office_phone"],
+				LegislatorParty:              lawmaker["party"],
+				LegislatorOfficeFax:          lawmaker["office_fax"],
+				LegislatorWebsite:            lawmaker["website"],
+				LegislatorBioguideUrl:        lawmaker["biography"],
 				LegislatorVoteSmartUrl:       lawmaker["votesmart_profile"],
 				LegislatorGovTrackUrl:        lawmaker["govtrack_profile"],
 				LegislatorBioguideId:         lawmaker["bioguide_id"],
@@ -172,8 +172,4 @@ func LegislatorsSearch(w http.ResponseWriter, r *http.Request) {
 			tmpl.Execute(w, data)
 		}
 	}
-
-	//fmt.Fprintf(w, "First Name = %s\n", firstname)
-	//fmt.Fprintf(w, "Last Name = %s\n", lastname)
-
 }

@@ -25,22 +25,31 @@
 
   <p>What does the application do?</p>
   <p>Displays contact, social media links and other links related to a specific congressional member.</p>
-  For example click on one of the following Legislators.
+  For example Search for a legislator.
   <p>
       <ul>
-          <li><a href="/legislator/Maria/Cantwell"> Maria Cantwell</a></li>
-          <li><a href="/legislator/Debbie/Stabenow"> Debbie Stabenow</a></li>
-          <li><a href="/legislator/ted/cruz"> Ted Cruz</a></li>
-          <li><a href="/legislator/Jeff/Merkley"> Jeff Merkley</a></li>
-          <li><a href="/legislator/Bill/Cassidy"> Bill Cassidy</a></li>
-          <li><a href="/legislator/Kirsten/Gillibrand"> Kirsten Gillibrand</a></li>
+        <li><a href="/legislator/Maria/Cantwell"> Maria Cantwell</a></li>
+        <li><a href="/legislator/Debbie/Stabenow"> Debbie Stabenow</a></li>
+        <li><a href="/legislator/ted/cruz"> Ted Cruz</a></li>
+        <li><a href="/legislator/Jeff/Merkley"> Jeff Merkley</a></li>
+        <li><a href="/legislator/Bill/Cassidy"> Bill Cassidy</a></li>
+        <li><a href="/legislator/Kirsten/Gillibrand"> Kirsten Gillibrand</a></li>
 
       </ul>
   </p>
 </div>
 <div class="container-fluid">
+<form method="POST" action="/find-legislator">
+    <label>First Name</label><input name="firstname" type="text" value="" />
+    <label>Last Name</label><input name="lastname" type="text" value="" />
+    <input type="submit" value="submit" class="btn btn-default"/>
+</form>
+</div>
+
+<div class="container-fluid">
     <h6>hostname: {{.PodHostname }}</h6>
 </div>
+
 </div>
 </body>
 </html>

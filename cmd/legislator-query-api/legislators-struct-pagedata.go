@@ -3,6 +3,8 @@ package main
 type LegislatorsPageData struct {
 	PageTitle                    string
 	PodHostname                  string
+	LegislatorFirstName          string
+	LegislatorLastName           string
 	LegislatorName               string
 	LegislatorMailingAddress     string
 	LegislatorOfficePhone        string

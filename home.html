@@ -25,6 +25,8 @@
         <li><strong> Office Fax:</strong> {{.LegislatorOfficeFax }}</li>
         {{end}}
 
+        <li><a href="/legislator/{{.LegislatorFirstName}}/{{.LegislatorLastName}}/offices">District Offices</a></li>
+
         {{ if .LegislatorWebsite }}
         <li><a href="{{.LegislatorWebsite}}" target="_blank">{{.LegislatorWebsite}}</a></li>
         {{end}}
@@ -32,6 +34,7 @@
         {{if .LegislatorContactFormUrl }}
         <li><a href="{{.LegislatorContactFormUrl}}" target="_blank">{{.LegislatorContactFormUrl}}</a></li>
         {{end}}
+
       </ul>
 
       <h2>Social Media</h2>
@@ -81,8 +84,12 @@
         <li><a href="{{.LegislatorRssFeed}}" target="_blank">{{.LegislatorRssFeed}}</a></li>
         {{end}}       
       </ul>
+
+
+      <p><a href="/legislator/{{.LegislatorFirstName}}/{{.LegislatorLastName}}/json">JSON API Payload</a></p>
     
 </div>
+
 
 </body>
 </html>
