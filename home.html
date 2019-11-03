@@ -1,0 +1,93 @@
+<!-- DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{.LegislatorName}} - Information</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <h1><FONT SIZE=5 COLOR="#800040"><a name="Top">{{.LegislatorName}}</a></FONT></h1>
+
+    <IMG class="img-circle" SRC="https://s3.amazonaws.com/uslegislators-images/108x108/{{.LegislatorBioguideId}}.jpg">
+    
+      <h2>Contact Me</h2>
+    
+      <ul>
+        <li><strong> Mailing Address:</strong> {{.LegislatorMailingAddress}}</li>
+        <li><strong> Office Phone:</strong> {{.LegislatorOfficePhone}}</li>
+        {{ if .LegislatorOfficeFax}}
+        <li><strong> Office Fax:</strong> {{.LegislatorOfficeFax }}</li>
+        {{end}}
+
+        {{ if .LegislatorWebsite }}
+        <li><a href="{{.LegislatorWebsite}}" target="_blank">{{.LegislatorWebsite}}</a></li>
+        {{end}}
+
+        {{if .LegislatorContactFormUrl }}
+        <li><a href="{{.LegislatorContactFormUrl}}" target="_blank">{{.LegislatorContactFormUrl}}</a></li>
+        {{end}}
+      </ul>
+
+      <h2>Social Media</h2>
+
+      <ul>
+        {{ if .LegislatorFacebookUrl }}
+        <li><a href="{{.LegislatorFacebookUrl}}" target="_blank">{{.LegislatorFacebookUrl}}</a></li>
+        {{end}}
+    
+        {{ if .LegislatorTwitterUrl }}
+        <li><a href="{{.LegislatorTwitterUrl}}" target="_blank">{{.LegislatorTwitterUrl}}</a></li> 
+        {{end}}
+        
+        {{ if .LegislatorYoutubeChannelUrl }}
+        <li><a href="{{.LegislatorYoutubeChannelUrl}}" target="_blank">{{.LegislatorYoutubeChannelUrl}}</a></li>
+        {{end}}
+      </ul>
+
+      <h2>Useful Links</h2>
+
+      <ul>
+        {{ if .LegislatorBioguideUrl }}
+        <li><a href="{{.LegislatorBioguideUrl}}" target="_blank">{{.LegislatorBioguideUrl}}</a></li>
+        {{end}}
+    
+        {{ if .LegislatorVoteSmartUrl }}
+        <li><a href="{{.LegislatorVoteSmartUrl}}" target="_blank">{{.LegislatorVoteSmartUrl}}</a></li>
+        {{end}}
+    
+        {{ if .LegislatorGovTrackUrl }}
+        <li><a href="{{.LegislatorGovTrackUrl}}" target="_blank">{{.LegislatorGovTrackUrl}}</a></li>
+        {{end}}
+    
+        {{ if .LegislatorOpenSecrets }}
+        <li><a href="{{.LegislatorOpenSecrets}}" target="_blank">{{.LegislatorOpenSecrets}}</a></li>
+        {{end}}
+    
+        {{ if .LegislatorHouseHistoryUrl }}
+        <li><a href="{{.LegislatorHouseHistoryUrl}}" target="_blank">{{.LegislatorHouseHistoryUrl}}</a></li> 
+        {{end}}
+    
+        {{ if .LegislatorMaplightProfileUrl }}
+        <li><a href="{{.LegislatorMaplightProfileUrl}}" target="_blank">{{.LegislatorMaplightProfileUrl}}</a></li>
+        {{end}}
+    
+        {{if .LegislatorRssFeed }}
+        <li><a href="{{.LegislatorRssFeed}}" target="_blank">{{.LegislatorRssFeed}}</a></li>
+        {{end}}       
+      </ul>
+    
+</div>
+
+</body>
+</html>
+
+
+ 
+ 
+

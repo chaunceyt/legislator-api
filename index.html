@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{.PageTitle}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+  <h3>{{.PageTitle}}</h3>
+  <p>This Application uses this data from this <a href="https://github.com/unitedstates/congress-legislators" target="_blank">repo</a></p>
+  <p>The purpose of the application is be used when DEMOing various K8s features.</p>
+  <p>
+   <u>
+      <li>Pod</li>
+      <li>Deployment</li>
+      <li>Scaling of deployments</li>
+      <li>HPA</li>
+   </u>
+  </p>
+
+  <p>What does the application do?</p>
+  <p>Displays contact, social media links and other links related to a specific congressional member.</p>
+  For example click on one of the following Legislators.
+  <p>
+      <ul>
+          <li><a href="/legislator/Maria/Cantwell"> Maria Cantwell</a></li>
+          <li><a href="/legislator/Debbie/Stabenow"> Debbie Stabenow</a></li>
+          <li><a href="/legislator/ted/cruz"> Ted Cruz</a></li>
+          <li><a href="/legislator/Jeff/Merkley"> Jeff Merkley</a></li>
+          <li><a href="/legislator/Bill/Cassidy"> Bill Cassidy</a></li>
+          <li><a href="/legislator/Kirsten/Gillibrand"> Kirsten Gillibrand</a></li>
+
+      </ul>
+  </p>
+</div>
+<div class="container-fluid">
+    <h6>hostname: {{.PodHostname }}</h6>
+</div>
+</div>
+</body>
+</html>
