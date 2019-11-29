@@ -1,5 +1,20 @@
 package main
 
+type LegislatorDistrictOffice struct {
+	ID             string
+	Address        string
+	Suite          string
+	City           string
+	State          string
+	Zip            string
+	Latitude       float64
+	Longitude      float64
+	Phone          string
+	Fax            string
+	Building       string
+	LegislatorName string
+}
+
 type LegislatorsPageData struct {
 	PageTitle                    string
 	PodHostname                  string
@@ -24,4 +39,5 @@ type LegislatorsPageData struct {
 	LegislatorMaplightProfileUrl string
 	LegislatorContactFormUrl     string
 	LegislatorRssFeed            string
+	LegislatorDistrictOffices    []LegislatorDistrictOffice
 }

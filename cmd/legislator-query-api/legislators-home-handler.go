@@ -129,11 +129,25 @@ func LegislatorsHome(w http.ResponseWriter, r *http.Request) {
 				lawmaker["rssfeed"] = ""
 			}
 
+			var legislatorOfficeList []LegislatorDistrictOffice
 			for _, o := range officesData {
 				if o.ID.Bioguide == v.ID.Bioguide {
 					for _, od := range o.Offices {
 						officeID := strings.Replace(od.ID, o.ID.Bioguide+"-", "", -1)
-						lawmaker["district_office_"+officeID] = "" + od.Address + " " + od.Suite + " " + od.Building + " " + od.City + " " + od.State + " " + od.Zip + " Phone: " + od.Phone + " Fax: " + od.Fax + ""
+						legislatorOfficeList = append(legislatorOfficeList, LegislatorDistrictOffice{
+							LegislatorName: firstname + " " + lastname,
+							ID:             strings.Title(strings.Replace(officeID, "_", " ", -1)),
+							Address:        od.Address,
+							Suite:          od.Suite,
+							Building:       od.Building,
+							City:           od.City,
+							State:          od.State,
+							Zip:            od.Zip,
+							Phone:          od.Phone,
+							Fax:            od.Fax,
+							Longitude:      od.Longitude,
+							Latitude:       od.Latitude,
+						})
 					}
 				}
 			}
@@ -161,6 +175,7 @@ func LegislatorsHome(w http.ResponseWriter, r *http.Request) {
 				LegislatorMaplightProfileUrl: lawmaker["maplight_profile"],
 				LegislatorContactFormUrl:     lawmaker["contact_form"],
 				LegislatorRssFeed:            lawmaker["rssfeed"],
+				LegislatorDistrictOffices:    legislatorOfficeList,
 			}
 			tmpl.Execute(w, data)
 		}

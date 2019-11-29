@@ -12,11 +12,13 @@
 <body>
 
 <div class="container-fluid">
+<div class="row">
+  <div class="col-sm-6">
     <h1><FONT SIZE=5 COLOR="#800040"><a name="Top">{{.LegislatorName}}</a></FONT></h1>
 
     <IMG class="img-circle" SRC="https://s3.amazonaws.com/uslegislators-images/108x108/{{.LegislatorBioguideId}}.jpg">
     
-      <h2>Contact Me</h2>
+      <h2>Contact Info</h2>
     
       <ul>
         <li><strong> Mailing Address:</strong> {{.LegislatorMailingAddress}}</li>
@@ -24,8 +26,6 @@
         {{ if .LegislatorOfficeFax}}
         <li><strong> Office Fax:</strong> {{.LegislatorOfficeFax }}</li>
         {{end}}
-
-        <li><a href="/legislator/{{.LegislatorFirstName}}/{{.LegislatorLastName}}/offices">District Offices</a></li>
 
         {{ if .LegislatorWebsite }}
         <li><a href="{{.LegislatorWebsite}}" target="_blank">{{.LegislatorWebsite}}</a></li>
@@ -84,12 +84,28 @@
         <li><a href="{{.LegislatorRssFeed}}" target="_blank">{{.LegislatorRssFeed}}</a></li>
         {{end}}       
       </ul>
+      <!--<p><a href="/legislator/{{.LegislatorFirstName}}/{{.LegislatorLastName}}/json">JSON API Payload</a></p>-->
+      </div>
+      <div class="col-sm-4">
+          <h1><FONT SIZE=5 COLOR="#800040"><a name="Top">District Offices</a></FONT></h1>
+            {{range .LegislatorDistrictOffices}}
+              <address>
+                {{.Address}} <a href="https://www.google.com/maps?q={{.Latitude}},{{.Longitude}}" target="_blank">map</a><br/>
+                {{if .Suite}}
+                {{.Suite}} {{.Building}}<br/>
+                {{end}}
+                {{.City}} {{.State}} {{.Zip}}<br/>
+                Phone {{.Phone}}<br/>
+                {{ if .Fax }}
+                Fax {{.Fax}}<br/>
+                {{end}}
+              </address>
+            {{end}}
+        </div>
 
-
-      <p><a href="/legislator/{{.LegislatorFirstName}}/{{.LegislatorLastName}}/json">JSON API Payload</a></p>
+      </div>
     
 </div>
-
 
 </body>
 </html>

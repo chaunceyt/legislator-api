@@ -61,12 +61,6 @@ var routes = Routes{
 		LegislatorsIndex,
 	},
 	Route{
-		"LegislatorsInfo",
-		"GET",
-		"/legislator/{firstname}/{lastname}/offices",
-		LegislatorsInfo,
-	},
-	Route{
 		"LegislatorsJSON",
 		"GET",
 		"/legislator/{firstname}/{lastname}/json",
