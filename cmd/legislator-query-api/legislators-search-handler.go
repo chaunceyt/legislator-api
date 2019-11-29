@@ -152,6 +152,8 @@ func LegislatorsSearch(w http.ResponseWriter, r *http.Request) {
 							Zip:            od.Zip,
 							Phone:          od.Phone,
 							Fax:            od.Fax,
+							Longitude:      od.Longitude,
+							Latitude:       od.Latitude,
 						})
 					}
 				}
