@@ -18,17 +18,17 @@ Another reason I'm allocating time to this application is to learn Go.
 ## Docker
 
 ```
-docker run --rm -d -p 8080:8080 chaunceyt/legislator:v0.0.4
+docker run --rm -d -p 8080:8080 chaunceyt/legislator-api:v0.0.4
 ```
 
 ## Kubernetes pod
 
 ```
-kubectl run legislator-api-pod --image chaunceyt/legislator:v0.0.4 --restart=Never
+kubectl run legislator-api-pod --image chaunceyt/legislator-api:v0.0.4 --restart=Never
 ```
 
 ## Kubernetes deployment
 
 ```
-kubectl run legislator-api --image chaunceyt/legislator:v0.0.4 --expose --port 8080
+kubectl run legislator-api --image chaunceyt/legislator-api:v0.0.4 --expose --port 8080
 ```
