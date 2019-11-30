@@ -49,10 +49,10 @@ var routes = Routes{
 		Index,
 	},
 	Route{
-		"LegislatorsSearch",
+		"LegislatorsApp",
 		"POST",
 		"/find-legislator",
-		LegislatorsSearch,
+		LegislatorsApp,
 	},
 	Route{
 		"LegislatorsIndex",
@@ -67,9 +67,9 @@ var routes = Routes{
 		LegislatorsJSON,
 	},
 	Route{
-		"LegislatorsHome",
+		"LegislatorsApp",
 		"GET",
 		"/legislator/{firstname}/{lastname}",
-		LegislatorsHome,
+		LegislatorsApp,
 	},
 }

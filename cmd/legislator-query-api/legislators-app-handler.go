@@ -2,7 +2,9 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -10,12 +12,35 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// LegislatorsHome return the homepage for the congressional member.
-func LegislatorsHome(w http.ResponseWriter, r *http.Request) {
+// LegislatorsApp return the homepage for the congressional member.
+func LegislatorsApp(w http.ResponseWriter, r *http.Request) {
+
+	w.Header().Set("X-XSS-Protection", "1; mode=block")
+	w.Header().Set("X-Frame-Options", "DENY")
+	w.Header().Set("X-Content-Type-Options", "nosniff")
+	w.Header().Set("Referrer-Policy", "same-origin")
+	w.Header().Set("Vary", "Accept-Encoding")
 
 	vars := mux.Vars(r)
-	firstname := vars["firstname"]
-	lastname := vars["lastname"]
+	firstname := ""
+	lastname := ""
+
+	if r.Method == http.MethodGet {
+		firstname = vars["firstname"]
+		lastname = vars["lastname"]
+	} else if r.Method == http.MethodPost {
+		if err := r.ParseForm(); err != nil {
+			fmt.Fprintf(w, "ParseForm() err: %v", err)
+			return
+		}
+		firstname = r.FormValue("firstname")
+		lastname = r.FormValue("lastname")
+	} else {
+		log.Println("This is a " + r.Method + " request")
+		fmt.Fprintf(w, "Invalid Request")
+		return
+	}
+
 	jsLegislatorsData := loadJSONData(currentLegislatorsJSONFile)
 	bsLegislatorsData := []byte(jsLegislatorsData)
 
@@ -57,6 +82,7 @@ func LegislatorsHome(w http.ResponseWriter, r *http.Request) {
 			} else {
 				legislatorName = termType(v.Terms[len(v.Terms)-1].Type) + " " + v.Name.OfficialFull + " (" + v.Terms[len(v.Terms)-1].Party + ") " + v.Terms[len(v.Terms)-1].State
 			}
+
 			lawmaker["bioguide_id"] = v.ID.Bioguide
 			lawmaker["name"] = legislatorName
 			lawmaker["mailing_address"] = v.Terms[len(v.Terms)-1].Address
