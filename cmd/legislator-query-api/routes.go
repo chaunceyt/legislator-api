@@ -49,6 +49,12 @@ var routes = Routes{
 		Index,
 	},
 	Route{
+		"LegislatorsAboutPage",
+		"GET",
+		"/about",
+		AboutPage,
+	},
+	Route{
 		"LegislatorsApp",
 		"POST",
 		"/find-legislator",
@@ -71,5 +77,11 @@ var routes = Routes{
 		"GET",
 		"/legislator/{firstname}/{lastname}",
 		LegislatorsApp,
+	},
+	Route{
+		"LegislatorsByState",
+		"GET",
+		"/bystate/{state}",
+		LegislatorsByState,
 	},
 }

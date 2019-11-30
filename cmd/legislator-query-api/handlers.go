@@ -33,4 +33,19 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, data)
 }
 
+func AboutPage(w http.ResponseWriter, r *http.Request) {
+
+	hostname, err := os.Hostname()
+	if err != nil {
+		panic(err)
+	}
+
+	tmpl := template.Must(template.ParseFiles("about.html"))
+	data := LegislatorsPageData{
+		PageTitle:   "Legislators API About",
+		PodHostname: hostname,
+	}
+	tmpl.Execute(w, data)
+}
+
 // healthz endpoint https://callistaenterprise.se/blogg/teknik/2017/03/22/go-blog-series-part6/

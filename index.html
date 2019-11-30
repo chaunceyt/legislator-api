@@ -12,42 +12,73 @@
 
 <div class="container-fluid">
   <h3>{{.PageTitle}}</h3>
-  <p>This Application uses this data from this <a href="https://github.com/unitedstates/congress-legislators" target="_blank">repo</a></p>
-  <p>The purpose of the application is be used when DEMOing various K8s features.</p>
-  <p>
-   <u>
-      <li>Pod</li>
-      <li>Deployment</li>
-      <li>Scaling of deployments</li>
-      <li>HPA</li>
-   </u>
-  </p>
-
-  <p>What does the application do?</p>
-  <p>Displays contact, social media links and other links related to a specific congressional member.</p>
-  For example Search for a legislator.
-  <p>
-      <ul>
-        <li><a href="/legislator/Maria/Cantwell"> Maria Cantwell</a></li>
-        <li><a href="/legislator/Debbie/Stabenow"> Debbie Stabenow</a></li>
-        <li><a href="/legislator/ted/cruz"> Ted Cruz</a></li>
-        <li><a href="/legislator/Jeff/Merkley"> Jeff Merkley</a></li>
-        <li><a href="/legislator/Bill/Cassidy"> Bill Cassidy</a></li>
-        <li><a href="/legislator/Kirsten/Gillibrand"> Kirsten Gillibrand</a></li>
-
-      </ul>
-  </p>
-</div>
-<div class="container-fluid">
-<form method="POST" action="/find-legislator">
-    <label>First Name</label><input name="firstname" type="text" value="" />
-    <label>Last Name</label><input name="lastname" type="text" value="" />
-    <input type="submit" value="submit" class="btn btn-default"/>
+  <p>Browse this system by State</p>
+<form>
+    <select id="state" onchange="if (this.value != '') window.location='/bystate/' + this.value" class="form-control">
+      <option value="">(Select Your State)</option>
+      <option value="AL">AL - Alabama</option>
+      <option value="AK">AK - Alaska</option>
+      <option value="AS">AS - American Samoa</option>
+      <option value="AZ">AZ - Arizona</option>
+      <option value="AR">AR - Arkansas</option>
+      <option value="CA">CA - California</option>
+      <option value="CO">CO - Colorado</option>
+      <option value="CT">CT - Connecticut</option>
+      <option value="DE">DE - Delaware</option>
+      <option value="DC">DC - District of Columbia</option>
+      <option value="FL">FL - Florida</option>
+      <option value="GA">GA - Georgia</option>
+      <option value="GU">GU - Guam</option>
+      <option value="HI">HI - Hawaii</option>
+      <option value="ID">ID - Idaho</option>
+      <option value="IL">IL - Illinois</option>
+      <option value="IN">IN - Indiana</option>
+      <option value="IA">IA - Iowa</option>
+      <option value="KS">KS - Kansas</option>
+      <option value="KY">KY - Kentucky</option>
+      <option value="LA">LA - Louisiana</option>
+      <option value="ME">ME - Maine</option>
+      <option value="MD">MD - Maryland</option>
+      <option value="MA">MA - Massachusetts</option>
+      <option value="MI">MI - Michigan</option>
+      <option value="MN">MN - Minnesota</option>
+      <option value="MS">MS - Mississippi</option>
+      <option value="MO">MO - Missouri</option>
+      <option value="MT">MT - Montana</option>
+      <option value="NE">NE - Nebraska</option>
+      <option value="NV">NV - Nevada</option>
+      <option value="NH">NH - New Hampshire</option>
+      <option value="NJ">NJ - New Jersey</option>
+      <option value="NM">NM - New Mexico</option>
+      <option value="NY">NY - New York</option>
+      <option value="NC">NC - North Carolina</option>
+      <option value="ND">ND - North Dakota</option>
+      <option value="MP">MP - Northern Mariana Islands</option>
+      <option value="OH">OH - Ohio</option>
+      <option value="OK">OK - Oklahoma</option>
+      <option value="OR">OR - Oregon</option>
+      <option value="PA">PA - Pennsylvania</option>
+      <option value="PR">PR - Puerto Rico</option>
+      <option value="RI">RI - Rhode Island</option>
+      <option value="SC">SC - South Carolina</option>
+      <option value="SD">SD - South Dakota</option>
+      <option value="TN">TN - Tennessee</option>
+      <option value="TX">TX - Texas</option>
+      <option value="UT">UT - Utah</option>
+      <option value="VT">VT - Vermont</option>
+      <option value="VI">VI - Virgin Islands</option>
+      <option value="VA">VA - Virginia</option>
+      <option value="WA">WA - Washington</option>
+      <option value="WV">WV - West Virginia</option>
+      <option value="WI">WI - Wisconsin</option>
+      <option value="WY">WY - Wyoming</option>
+    </select>
 </form>
 </div>
 
 <div class="container-fluid">
     <h6>hostname: {{.PodHostname }}</h6>
+    <h6><a href="/about">about this app</a></h6>
 </div>
 
 </div>
