@@ -56,6 +56,8 @@ type LegislatorByStatePageData struct {
 
 // LegislatorsByState - return legislators by state.
 func LegislatorsByState(w http.ResponseWriter, r *http.Request) {
+	secureHeaders(w)
+
 	vars := mux.Vars(r)
 	state := strings.ToUpper(vars["state"])
 

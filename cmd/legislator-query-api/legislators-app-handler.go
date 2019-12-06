@@ -14,13 +14,7 @@ import (
 
 // LegislatorsApp return the homepage for the congressional member.
 func LegislatorsApp(w http.ResponseWriter, r *http.Request) {
-
-	w.Header().Set("X-XSS-Protection", "1; mode=block")
-	w.Header().Set("X-Frame-Options", "DENY")
-	w.Header().Set("X-Content-Type-Options", "nosniff")
-	w.Header().Set("Referrer-Policy", "same-origin")
-	w.Header().Set("Vary", "Accept-Encoding")
-	w.WriteHeader(http.StatusOK)
+	secureHeaders(w)
 
 	vars := mux.Vars(r)
 	firstname := ""
