@@ -2,6 +2,7 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 	"strings"
 
@@ -60,21 +61,20 @@ func LegislatorsByState(w http.ResponseWriter, r *http.Request) {
 
 	db, err := gorm.Open("sqlite3", "data/legislator.db")
 	if err != nil {
+		log.Println(err.Error())
 		panic("Failed to connect to database")
 	}
 	defer db.Close()
 
 	var legislators []LegislatorByState
-	//db.Find(&legislators)
 	db.Raw("SELECT * FROM legislators WHERE state = ?", state).Scan(&legislators)
-	//json.NewEncoder(w).Encode(legislators)
 
 	tmpl := template.Must(template.ParseFiles("state.html"))
 	data := LegislatorByStatePageData{
 		PageTitle:   "Legislators By State",
 		Legislators: legislators,
 	}
-	// log.Println(data)
+
 	tmpl.Execute(w, data)
 
 }
