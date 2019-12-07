@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// loadJSONData - load json file from filesystem.
 func loadJSONData(jsonFile string) string {
 
 	jsLegistatorData, err := ioutil.ReadFile(jsonFile)
@@ -15,6 +16,7 @@ func loadJSONData(jsonFile string) string {
 
 }
 
+// termType - Convert rep and sen to full terms.
 func termType(legType string) string {
 	legislatorType := ""
 	switch legType {

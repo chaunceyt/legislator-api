@@ -8,6 +8,8 @@ import (
 )
 
 func LegislatorsIndex(w http.ResponseWriter, r *http.Request) {
+	secureHeaders(w)
+
 	hostname, err := os.Hostname()
 	if err != nil {
 		panic(err)
@@ -19,6 +21,7 @@ func LegislatorsIndex(w http.ResponseWriter, r *http.Request) {
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
+	secureHeaders(w)
 
 	hostname, err := os.Hostname()
 	if err != nil {
@@ -34,6 +37,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func AboutPage(w http.ResponseWriter, r *http.Request) {
+	secureHeaders(w)
 
 	hostname, err := os.Hostname()
 	if err != nil {
